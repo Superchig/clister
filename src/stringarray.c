@@ -21,6 +21,7 @@ StrArr *new_strarr()
 		die("Could not allocate memory.");
 	}
 
+	strarr->name = NULL;
 	strarr->size = 0;
 	strarr->max_size = STRARR_DEFAULT_SIZE;
 
@@ -60,6 +61,16 @@ char *get_at_n_strarr(StrArr *self, int n)
 	return n > self->max_size - 1 ? NULL : self->strings[n];
 }
 
+void delete_at_n_strarr(StrArr *self, int n)
+{
+	for (; n < self->size - 1; n++) {
+		printf("String copied!");
+		self->strings[n] = self->strings[n + 1];
+	}
+
+	self->strings[--self->size] = NULL;
+}
+
 void delete_strarr(StrArr *self)
 {
 	for (int i = 0; i < self->size; ++i) {
@@ -68,5 +79,8 @@ void delete_strarr(StrArr *self)
 	}
 
 	free(self->strings);
+	if (self->name) {
+		free(self->name);
+	}
 	free(self);
 }

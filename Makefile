@@ -18,3 +18,6 @@ test: obj/stringarray.o obj/test.o
 
 obj/%.o : src/%.c
 	$(CC) -c $(CFLAGS) $< -o $@
+
+clean:
+	rm OBJ clister

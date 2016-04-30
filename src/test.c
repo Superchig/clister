@@ -27,7 +27,17 @@ int main()
 
 	printf("Maximum size of list: %d\n", list->max_size);
 
+	printf("Deleting item at index 1...\n");
+	delete_at_n_strarr(list, 1);
+
+	printf("Showing items in list:\n");
+	for (int i = 0; i < list->size; ++i) {
+		printf("Item %d: %s\n", i, get_at_n_strarr(list, i));
+	}
+	printf("Size of list: %d\n", list->size);
+
 	delete_strarr(list);
+	free(string2);
 	
 	return 0;
 }
